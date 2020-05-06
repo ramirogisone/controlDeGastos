@@ -53,6 +53,22 @@ class Interfaz {
 		const restante = document.getElementById('restante');
 		const saldoRestante = cantidadPresupuesto.presupuestoRestante(cantidad);
 		restante.innerHTML = `${saldoRestante}`;
+		this.comprobarSaldo();
+	}
+	comprobarSaldo(){
+		console.log(cantidadPresupuesto);
+		const saldoTotal = cantidadPresupuesto.presupuesto;
+		const saldoRestante = cantidadPresupuesto.restante;
+
+		if((saldoTotal / 4) > saldoRestante){
+			const restante = document.querySelector('.restante');
+			restante.classList.remove('alert-success', 'alert-warning');
+			restante.classList.add('alert-danger');
+		}else if((saldoTotal / 2) > saldoRestante) {
+			const restante = document.querySelector('.restante');
+			restante.classList.remove('alert-success');
+			restante.classList.add('alert-warning');
+		}
 	}
 }
 document.addEventListener('DOMContentLoaded', function(){
